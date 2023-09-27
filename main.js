@@ -14,11 +14,13 @@ form.addEventListener("submit",(e) =>{
 
 let formValidation = () => {
     if (input.value === ""){
+        //The value() property sets or returns the value of the value attribute of a text field.
         msg.innerHTML = "Post cannot be blank";
         console.log("failure");
     }else{
         console.log("success");
         msg.innerHTML = "";
+        //msg.innerHTML is necessary in else case otherwise blank message will not clear
         acceptData();
     }
 };
@@ -45,5 +47,10 @@ let acceptData = () => {
   };
 
   let deletePost = (e) => {
+    e.parentElement.parentElement.remove();
+  };
+  
+  let editPost = (e) => {
+    input.value = e.parentElement.previousElementSibling.innerHTML;
     e.parentElement.parentElement.remove();
   };
